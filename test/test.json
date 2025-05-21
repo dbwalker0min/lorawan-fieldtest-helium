@@ -1,0 +1,164 @@
+[
+  {
+    "deduplicationId": "e0d9d5e9-e7a4-476d-a936-bb7a5b1758a5",
+    "time": "2025-05-19T00:38:53.512+00:00",
+    "deviceInfo": {
+      "tenantId": "94e6106f-f4b8-4abb-9c36-7a5f5a24da5c",
+      "tenantName": "ePlant",
+      "applicationId": "6a673591-a089-46f7-8719-189e13b00a2d",
+      "applicationName": "FieldTester",
+      "deviceProfileId": "65677281-29bc-46d7-89d1-575695ede7b4",
+      "deviceProfileName": "FieldTester",
+      "deviceName": "Gg",
+      "devEui": "ac1f09fffe18a561",
+      "deviceClassEnabled": "CLASS_A",
+      "tags": {}
+    },
+    "devAddr": "78000078",
+    "adr": false,
+    "dr": 0,
+    "fCnt": 19,
+    "fPort": 1,
+    "confirmed": true,
+    "data": "mnrY1oZHBAgLCA==",
+    "rxInfo": [
+      {
+        "gatewayId": "9e7779d775c6f25c",
+        "uplinkId": 25160,
+        "gwTime": "2025-05-19T00:38:53.512+00:00",
+        "rssi": -128,
+        "snr": -16.0,
+        "context": "Fz+H3w==",
+        "metadata": {
+          "regi": "US915",
+          "gateway_name": "boxy-flaxen-octopus",
+          "network": "helium_iot",
+          "gateway_id": "112cSbov7zi2FgFEFnn21v7P1BekiXexe7JqDYmuMvFqkKFsnJkp",
+          "gateway_lat": "37.490022530534432",
+          "gateway_long": "-121.920746495878333",
+          "gateway_h3index": "8c2834614b35bff"
+        },
+        "crcStatus": "CRC_OK"
+      }
+    ],
+    "txInfo": {
+      "frequency": 904700000,
+      "modulation": {
+        "lora": {
+          "bandwidth": 125000,
+          "spreadingFactor": 10,
+          "codeRate": "CR_4_5"
+        }
+      }
+    },
+    "regionConfigId": "us915_1"
+  },
+  {
+    "deduplicationId": "a680352f-96c2-4fb6-adda-47c462243880",
+    "time": "2025-05-19T01:03:23.307+00:00",
+    "deviceInfo": {
+      "tenantId": "94e6106f-f4b8-4abb-9c36-7a5f5a24da5c",
+      "tenantName": "ePlant",
+      "applicationId": "6a673591-a089-46f7-8719-189e13b00a2d",
+      "applicationName": "FieldTester",
+      "deviceProfileId": "65677281-29bc-46d7-89d1-575695ede7b4",
+      "deviceProfileName": "FieldTester",
+      "deviceName": "Gg",
+      "devEui": "ac1f09fffe18a561",
+      "deviceClassEnabled": "CLASS_A",
+      "tags": {}
+    },
+    "devAddr": "78000078",
+    "adr": false,
+    "dr": 0,
+    "fCnt": 68,
+    "fPort": 2,
+    "confirmed": true,
+    "data": "mnrX1oY8BAQIDA==",
+    "rxInfo": [
+      {
+        "gatewayId": "9e7779d775c6f25c",
+        "uplinkId": 55314,
+        "gwTime": "2025-05-19T01:03:23.307+00:00",
+        "rssi": -125,
+        "snr": -14.0,
+        "context": "btrSYg==",
+        "metadata": {
+          "gateway_long": "-121.920746495878333",
+          "gateway_lat": "37.490022530534432",
+          "gateway_name": "boxy-flaxen-octopus",
+          "network": "helium_iot",
+          "regi": "US915",
+          "gateway_h3index": "8c2834614b35bff",
+          "gateway_id": "112cSbov7zi2FgFEFnn21v7P1BekiXexe7JqDYmuMvFqkKFsnJkp"
+        },
+        "crcStatus": "CRC_OK"
+      }
+    ],
+    "txInfo": {
+      "frequency": 905100000,
+      "modulation": {
+        "lora": {
+          "bandwidth": 125000,
+          "spreadingFactor": 10,
+          "codeRate": "CR_4_5"
+        }
+      }
+    },
+    "regionConfigId": "us915_1"
+  },
+  {
+    "deduplicationId": "1fe32490-8f2b-468f-9a05-f9e7ee739e25",
+    "time": "2025-05-19T01:02:53.307+00:00",
+    "deviceInfo": {
+      "tenantId": "94e6106f-f4b8-4abb-9c36-7a5f5a24da5c",
+      "tenantName": "ePlant",
+      "applicationId": "6a673591-a089-46f7-8719-189e13b00a2d",
+      "applicationName": "FieldTester",
+      "deviceProfileId": "65677281-29bc-46d7-89d1-575695ede7b4",
+      "deviceProfileName": "FieldTester",
+      "deviceName": "Gg",
+      "devEui": "ac1f09fffe18a561",
+      "deviceClassEnabled": "CLASS_A",
+      "tags": {}
+    },
+    "devAddr": "78000078",
+    "adr": false,
+    "dr": 0,
+    "fCnt": 67,
+    "fPort": 1,
+    "confirmed": true,
+    "data": "mnrXVoY8BAIIDA==",
+    "rxInfo": [
+      {
+        "gatewayId": "9e7779d775c6f25c",
+        "uplinkId": 63930,
+        "gwTime": "2025-05-19T01:02:53.307+00:00",
+        "rssi": -129,
+        "snr": -18.0,
+        "context": "bREMLw==",
+        "metadata": {
+          "network": "helium_iot",
+          "gateway_long": "-121.920746495878333",
+          "regi": "US915",
+          "gateway_lat": "37.490022530534432",
+          "gateway_id": "112cSbov7zi2FgFEFnn21v7P1BekiXexe7JqDYmuMvFqkKFsnJkp",
+          "gateway_name": "boxy-flaxen-octopus",
+          "gateway_h3index": "8c2834614b35bff"
+        },
+        "crcStatus": "CRC_OK"
+      }
+    ],
+    "txInfo": {
+      "frequency": 904500000,
+      "modulation": {
+        "lora": {
+          "bandwidth": 125000,
+          "spreadingFactor": 10,
+          "codeRate": "CR_4_5"
+        }
+      }
+    },
+    "regionConfigId": "us915_1"
+  }
+]
