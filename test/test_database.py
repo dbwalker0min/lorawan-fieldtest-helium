@@ -19,6 +19,8 @@ async def session_fixture():
         async with engine.begin() as conn:
             await conn.run_sync(SQLModel.metadata.create_all)
         yield session
+        await engine.dispose()
+
 
 @pytest.mark.asyncio(loop_scope="function")
 async def test_create_packet(session: AsyncSession):
