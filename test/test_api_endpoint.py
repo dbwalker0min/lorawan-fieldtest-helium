@@ -12,11 +12,12 @@ from app.db.database import get_session
 async def session_fixture():
     if os.path.exists("test.db"):
         os.remove("test.db")
-    engine = create_async_engine("sqlite+aiosqlite:///./test.db", echo=False, future=True)
+    engine = create_async_engine("sqlite+aiosqlite:///:memory:", echo=False, future=True)
     async with AsyncSession(engine) as session:
         async with engine.begin() as conn:
             await conn.run_sync(SQLModel.metadata.create_all)
         yield session
+        print("\n\nCleaning up the database...\n")
         await engine.dispose()
 
 @pytest.mark.asyncio
