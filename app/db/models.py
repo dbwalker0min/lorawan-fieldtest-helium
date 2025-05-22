@@ -12,14 +12,14 @@ class RawPacket(SQLModel, table=True):
     data: str
 
     gateways: List["GatewayReception"] = Relationship(
-        back_populates="raw_packet", 
+        back_populates="raw_packet",
         sa_relationship_kwargs=dict(cascade="all, delete-orphan")
-        )
+    )
     # a decoded result does not need to be present for a raw packet
     decoded_results: Optional["Decoded"] = Relationship(
-        back_populates="raw_packet", 
+        back_populates="raw_packet",
         sa_relationship_kwargs=dict(cascade="all, delete-orphan")
-        )
+    )
 
 
 class GatewayReception(SQLModel, table=True):
@@ -45,4 +45,6 @@ class Decoded(SQLModel, table=True):
     hdop: float
     nsatellites: int
 
-    raw_packet: Optional[RawPacket] = Relationship(back_populates="decoded_results")
+    raw_packet: Optional[RawPacket] = Relationship(
+        back_populates="decoded_results"
+    )

@@ -2,6 +2,11 @@ from app.services.parse_port1 import parse_packet, Decoded
 from app.schema.schema import Packet
 from app.db.models import RawPacket, GatewayReception, Decoded
 from sqlmodel.ext.asyncio.session import AsyncSession
+from app.services.build_response import build_response
+from sqlalchemy.future import select
+from sqlalchemy.orm import selectinload
+
+from hexdump import hexdump
 
 
 async def process_packet(packet: Packet, session: AsyncSession) -> None:
@@ -38,4 +43,22 @@ async def process_packet(packet: Packet, session: AsyncSession) -> None:
     session.add(raw_packet)
     await session.commit()
     await session.refresh(raw_packet)
+
+    print(raw_packet.id)
+
+    result = await session.exec(
+        select(RawPacket)
+        .options(
+            selectinload(RawPacket.gateways),
+            selectinload(RawPacket.decoded_results)
+        )
+        .where(RawPacket.id == raw_packet.id)
+    )
+    raw_packet = result.scalar_one()
+    # from the raw packet, create the response (assuming the port was 1 and the HDOP was better than 2)
+    if raw_packet.decoded_results and raw_packet.decoded_results.hdop < 2:
+        response = build_response(raw_packet)
+        print("\nResponse:")
+        hexdump(response)
+        # send the response to the device
 

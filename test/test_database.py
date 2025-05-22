@@ -17,8 +17,6 @@ async def session_fixture():
         async with engine.begin() as conn:
             await conn.run_sync(SQLModel.metadata.create_all)
         yield session
-        print("\n\nCleaning up the database...\n")
-        await engine.dispose()
 
 
 @pytest.mark.asyncio(loop_scope="function")
