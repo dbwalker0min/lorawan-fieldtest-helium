@@ -5,6 +5,7 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 from app.services.build_response import build_response
 from sqlalchemy.future import select
 from sqlalchemy.orm import selectinload
+from app.services.send_downlink import send_downlink_async
 
 from hexdump import hexdump
 
@@ -32,6 +33,8 @@ async def process_packet(packet: Packet, session: AsyncSession) -> None:
 
     # Create the RawPacket object
     raw_packet = RawPacket(
+        dev_eui=int(packet.deviceInfo.devEui, 16) - 2**63,
+        dev_name=packet.deviceInfo.deviceName,
         time=packet.time,
         fPort=packet.fPort,
         fCnt=packet.fCnt,
@@ -46,7 +49,7 @@ async def process_packet(packet: Packet, session: AsyncSession) -> None:
 
     print(raw_packet.id)
 
-    result = await session.exec(
+    result = await session.execute(
         select(RawPacket)
         .options(
             selectinload(RawPacket.gateways),
@@ -58,7 +61,12 @@ async def process_packet(packet: Packet, session: AsyncSession) -> None:
     # from the raw packet, create the response (assuming the port was 1 and the HDOP was better than 2)
     if raw_packet.decoded_results and raw_packet.decoded_results.hdop < 2:
         response = build_response(raw_packet)
-        print("\nResponse:")
-        hexdump(response)
+
         # send the response to the device
+        await send_downlink_async(
+            dev_eui=packet.deviceInfo.devEui,
+            payload=response,
+            fport=2,
+            confirmed=False
+        )
 

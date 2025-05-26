@@ -1,11 +1,14 @@
 from sqlmodel import Field, SQLModel, Relationship
 from datetime import datetime
 from typing import Optional, List
+from sqlalchemy import BigInteger, Column
 
 
 class RawPacket(SQLModel, table=True):
     """Raw packet data from the LoRaWAN network server."""
     id: int = Field(default=None, primary_key=True)
+    dev_eui: int = Field(sa_column=Column(BigInteger()))
+    dev_name: str
     time: datetime
     fPort: int
     fCnt: int

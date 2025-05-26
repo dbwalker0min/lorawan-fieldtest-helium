@@ -1,5 +1,6 @@
 from app.db.models import RawPacket, GatewayReception, Decoded
 import math
+from hexdump import hexdump
 
 
 def compute_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -22,6 +23,7 @@ def build_response(raw_packet: RawPacket) -> bytes:
     # find the minium and maximum RSSI and minimum and maximum distance
     min_rssi = min_distance = math.inf
     max_rssi = max_distance = -math.inf
+    ngateways = len(raw_packet.gateways)
 
     for gateway in raw_packet.gateways:
         min_rssi = min(min_rssi, gateway.rssi)
@@ -43,12 +45,17 @@ def build_response(raw_packet: RawPacket) -> bytes:
     min_distance = int(min(max(round(min_distance/250), 1), 255))
     max_distance = int(min(max(round(max_distance/250), 1), 255))
 
-    return bytes([
+    print(f"min_rssi: {min_rssi}, max_rssi: {max_rssi}, min_distance: {min_distance}, max_distance: {max_distance}, ngateways: {ngateways}")
+
+    message = bytes([
         raw_packet.fCnt % 256,
         min_rssi,
         max_rssi,
         min_distance,
         max_distance,
-        0
+        ngateways
     ])
+
+    hexdump(message)
+    return message
     

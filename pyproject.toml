@@ -5,11 +5,12 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "chirpstack-api>=4.12.1",
     "fastapi>=0.115.12",
     "hexdump>=3.3",
     "httpx>=0.28.1",
+    "psycopg[binary]>=3.2.9",
     "sqlmodel>=0.0.24",
+    "uvicorn>=0.34.2",
 ]
 
 [dependency-groups]
@@ -17,6 +18,7 @@ dev = [
     "aiosqlite>=0.21.0",
     "pytest>=8.3.5",
     "pytest-asyncio>=0.26.0",
+    "pytest-cov>=6.1.1",
 ]
 
 [tool.pytest.ini_options]

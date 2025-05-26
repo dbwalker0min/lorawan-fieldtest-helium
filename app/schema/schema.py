@@ -5,6 +5,10 @@ from datetime import datetime
 
 class Packet(BaseModel):
 
+    class DeviceInfo(BaseModel):
+        deviceName: str
+        devEui: str
+
     class RxInfo(BaseModel):
         class GatewayMetadata(BaseModel):
             gateway_name: str
@@ -16,6 +20,7 @@ class Packet(BaseModel):
         metadata: GatewayMetadata
 
     time: datetime
+    deviceInfo: DeviceInfo
     fCnt: int
     fPort: int
     data: str
