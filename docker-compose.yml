@@ -1,0 +1,10 @@
+
+services:
+  api:
+    build: .
+    image: dbwalker/lorawan-fieldtest:latest
+    container_name: tracker-api
+    ports:
+      - "17560:17560"
+    env_file:
+      - .env

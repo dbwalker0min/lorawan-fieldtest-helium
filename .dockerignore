@@ -1,0 +1,9 @@
+# Do not copy the following files and directories to the Docker image
+__pycache__/
+*.pyc
+*.pyo
+*.log
+.env
+.venv/
+env/
+.git/

@@ -4,11 +4,14 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 from typing import AsyncGenerator
 import os
 from urllib.parse import quote
+import socket
 
-user = quote(os.environ.get("POSTGRESQL_USER", "postgres"))
-passwd = quote(os.environ.get("POSTGRESQL_PASSWD", "password"))
+user = quote(os.environ["POSTGRESQL_USER"])
+passwd = quote(os.environ["POSTGRESQL_PASSWD"])
 
-DATABASE_URL = f"postgresql+psycopg://{user}:{passwd}@dbwalker0min.info:5432/tracker?sslmode=require"
+host = os.environ["POSTGRESQL_HOST"]
+
+DATABASE_URL = f"postgresql+psycopg://{user}:{passwd}@{host}:5432/tracker?sslmode=require"
 
 print(f"Connecting to database at {DATABASE_URL}")
 
