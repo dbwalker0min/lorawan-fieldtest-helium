@@ -1,0 +1,1 @@
+This directory contains certificates for TLS between the LoRaWAN LNS and the API endpoint.

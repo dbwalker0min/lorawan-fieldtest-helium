@@ -5,13 +5,22 @@ from typing import AsyncGenerator
 import os
 from urllib.parse import quote
 import socket
+from pydantic import BaseSettings
 
-user = quote(os.environ["POSTGRESQL_USER"])
-passwd = quote(os.environ["POSTGRESQL_PASSWD"])
+class Settings(BaseSettings):
+    POSTGRESQL_USER: str = "postgres"
+    POSTGRESQL_PASSWD: str = "password"
+    POSTGRESQL_HOST: str = "localhost"
 
-host = os.environ["POSTGRESQL_HOST"]
+    class Config:
+        env_file = ".env"
 
-DATABASE_URL = f"postgresql+psycopg://{user}:{passwd}@{host}:5432/tracker?sslmode=require"
+settings = Settings()
+
+# Quote the user and password to handle special characters
+user = quote(settings.POSTGRESQL_USER)
+passwd = quote(settings.POSTGRESQL_PASSWD)
+DATABASE_URL = f"postgresql+psycopg://{user}:{passwd}@{settings.POSTGRESQL_HOST}:5432/tracker?sslmode=require"
 
 print(f"Connecting to database at {DATABASE_URL}")
 
