@@ -5,5 +5,7 @@
         "--asyncio-mode=auto"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.analysis.extraPaths": ["./fastapi"]
 }
