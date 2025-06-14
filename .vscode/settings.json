@@ -6,6 +6,9 @@
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
-    "python.envFile": "${workspaceFolder}/.env",
-    "python.analysis.extraPaths": ["./fastapi"]
+    "python.envFile": "${workspaceFolder}/fastapi_app/.env",
+    "python.analysis.extraPaths": ["./fastapi"],
+    "files.associations": {
+        "*.conf.template": "nginx"
+    },
 }

@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Make database connectable",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        ".\\scripts\\enable-port.ps1",
+        "1"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Make database private",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        ".\\scripts\\enable-port.ps1",
+        "0"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

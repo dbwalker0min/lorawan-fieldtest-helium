@@ -175,3 +175,6 @@ cython_debug/
 
 # test python files
 play_*.py
+
+# VSCode directories
+.vs/

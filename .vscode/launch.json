@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "FastAPI: Run app/__main__.py correctly",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "app",
+      "cwd": "${workspaceFolder}/fastapi_app",
+      "envFile": "${workspaceFolder}/fastapi_app/.env"
+    }
+  ]
+}

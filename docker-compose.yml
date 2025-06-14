@@ -1,17 +1,18 @@
 
 services:
   api:
-    build: .
+    build:
+      context: ./fastapi_app
+      dockerfile: Dockerfile
     image: dbwalker/lorawan-fieldtest:latest
     container_name: tracker-api
     depends_on:
       - db
     ports:
       - "17560:17560"
+    # expose port 8080 for Swagger API documentation
     expose:
       - "8080"
-    environment:
-      DATABASE_URL: postgresql://postgres:password@db:5432/yourdb
     env_file:
       - .env
 
@@ -19,7 +20,7 @@ services:
     image: nginx:stable
     container_name: nginx
     ports:
-      - "{API_PORT}:443"
+      - "${API_PORT:-443}:443"
     volumes:
       - ./templates:/etc/nginx/templates:ro
       - ./certs:/etc/ssl/certs:ro
@@ -32,11 +33,14 @@ services:
     image: postgres:16
     container_name: db
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: yourdb
+      - POSTGRES_PASSWORD=password
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - ./dynamic_data/db:/var/lib/postgresql/data
 
-volumes:
-  db_data:
+  appsmith:
+    image: appsmith/appsmith-ce
+    expose:
+      - "80"
+    volumes:
+      - ./dynamic_data/appsmith:/appsmith-stacks
+
